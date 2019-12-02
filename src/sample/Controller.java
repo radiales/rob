@@ -9,6 +9,10 @@ import javafx.stage.Stage;
 public class Controller {
 
     @FXML
+    private TextField questBox;
+
+    @FXML
+    private TextField ansBox;
     private Button exitBtn;
     private Button okBtn;
 
@@ -22,6 +26,11 @@ public class Controller {
 
     @FXML
     private void ok() {
+        String quest = questBox.getText();
+        String ans   = ansBox.getText();
+
+        System.out.println(quest);
+        System.out.println(ans);
         // To Do, Text einfach aus Textbox Nehmen und in YAML hauen
     }
 
