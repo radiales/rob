@@ -29,8 +29,7 @@ public class Controller {
         String quest = questBox.getText();
         String ans   = ansBox.getText();
 
-        System.out.println(quest);
-        System.out.println(ans);
+        
         // To Do, Text einfach aus Textbox Nehmen und in YAML hauen
     }
 
