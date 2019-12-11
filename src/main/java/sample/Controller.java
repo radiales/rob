@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+
+
 public class Controller {
 
     @FXML
@@ -18,18 +20,16 @@ public class Controller {
 
     @FXML
     private void exit() {                                       // Handler für den Exit Button des UI's
-        //Stage stage = (Stage) exitBtn.getScene().getWindow();
-        //stage.close();
         Platform.exit();
         System.exit(0);
+
     }
 
     @FXML
     private void ok() {
-        String quest = questBox.getText();
-        String ans   = ansBox.getText();
+        answers ans = new answers(questBox.getText(),ansBox.getText());
 
-        
+
         // To Do, Text einfach aus Textbox Nehmen und in YAML hauen
     }
 
