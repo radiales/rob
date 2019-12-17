@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="392.0" prefWidth="309.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <Text layoutX="37.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fragen Verwaltungstool" textAlignment="CENTER" wrappingWidth="233.33678436279297">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Text>
+      <Button fx:id="MainAdd" layoutX="76.0" layoutY="68.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="161.0" text="Frage Eingeben" />
+      <Button layoutX="76.0" layoutY="188.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="161.0" text="Excel Datei Einbinden" />
+      <Button layoutX="76.0" layoutY="248.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="161.0" text="About" />
+      <Button layoutX="76.0" layoutY="308.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="161.0" text="Beenden" />
+      <Button layoutX="76.0" layoutY="128.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="161.0" text="Frage Löschen" />
+   </children>
+</AnchorPane>

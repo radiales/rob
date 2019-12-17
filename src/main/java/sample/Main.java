@@ -14,10 +14,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        FXMLLoader loader = new FXMLLoader(new File("C:\\Users\\radia\\IdeaProjects\\rob\\src\\main\\resources\\sample.fxml").toURI().toURL()); // Maven hat die Struktur zerschossen, deshalb Hardcoded Path
+        FXMLLoader loader = new FXMLLoader(new File("C:\\Users\\radia\\IdeaProjects\\rob\\src\\main\\resources\\mainwindow.fxml").toURI().toURL()); // Maven hat die Struktur zerschossen, deshalb Hardcoded Path
         Parent root = loader.load();
-        primaryStage.setTitle("Fragen Hinzufügen");
-        primaryStage.setScene(new Scene(root, 640, 350));
+        primaryStage.setTitle("");
+        primaryStage.setScene(new Scene(root, 309, 392));
         primaryStage.setOnCloseRequest(e -> Platform.exit());
         primaryStage.setResizable(false);
         primaryStage.show();
