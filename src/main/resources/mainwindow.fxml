@@ -1,21 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="392.0" prefWidth="309.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane prefHeight="611.0" prefWidth="814.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <Text layoutX="37.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fragen Verwaltungstool" textAlignment="CENTER" wrappingWidth="233.33678436279297">
+      <Text layoutX="281.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fragen Verwaltungstool" textAlignment="CENTER" wrappingWidth="233.33678436279297">
          <font>
             <Font size="19.0" />
          </font>
       </Text>
-      <Button fx:id="MainAdd" layoutX="76.0" layoutY="68.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="161.0" text="Frage Eingeben" />
-      <Button layoutX="76.0" layoutY="188.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="161.0" text="Excel Datei Einbinden" />
-      <Button layoutX="76.0" layoutY="248.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="161.0" text="About" />
-      <Button layoutX="76.0" layoutY="308.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="161.0" text="Beenden" />
-      <Button layoutX="76.0" layoutY="128.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="161.0" text="Frage Löschen" />
+      <Button fx:id="Mabt" layoutX="429.0" layoutY="537.0" mnemonicParsing="false" onAction="#abt" prefHeight="60.0" prefWidth="199.0" text="About" />
+      <Button fx:id="MainEnd" layoutX="632.0" layoutY="537.0" mnemonicParsing="false" onAction="#MEnd" prefHeight="60.0" prefWidth="169.0" text="Beenden" />
+      <Button fx:id="MainDel" layoutX="222.0" layoutY="537.0" mnemonicParsing="false" onAction="#MDel" prefHeight="60.0" prefWidth="199.0" text="Auswahl löschen" />
+      <TableView fx:id="tableView" layoutX="8.0" layoutY="68.0" prefHeight="399.0" prefWidth="796.0">
+        <columns>
+          <TableColumn fx:id="qCol" prefWidth="260.0" text="Frage" />
+          <TableColumn fx:id="aCol" minWidth="0.0" prefWidth="321.0" text="Antwort" />
+            <TableColumn fx:id="kCol" prefWidth="148.0" text="Kategorie" />
+        </columns>
+      </TableView>
+      <TextField fx:id="questBox" layoutX="14.0" layoutY="472.0" prefHeight="60.0" prefWidth="199.0" promptText="Frage">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="ansBox" layoutX="222.0" layoutY="472.0" prefHeight="60.0" prefWidth="199.0" promptText="Antwort">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="katBox" layoutX="429.0" layoutY="472.0" prefHeight="60.0" prefWidth="199.0" promptText="Kategorie">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </TextField>
+      <Button fx:id="bAdd" layoutX="632.0" layoutY="472.0" mnemonicParsing="false" onAction="#bAdd" prefHeight="60.0" prefWidth="169.0" text="Frage Hinzufügen" />
    </children>
 </AnchorPane>

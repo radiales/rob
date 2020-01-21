@@ -17,7 +17,7 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(new File("C:\\Users\\radia\\IdeaProjects\\rob\\src\\main\\resources\\mainwindow.fxml").toURI().toURL()); // Maven hat die Struktur zerschossen, deshalb Hardcoded Path
         Parent root = loader.load();
         primaryStage.setTitle("");
-        primaryStage.setScene(new Scene(root, 309, 392));
+        primaryStage.setScene(new Scene(root));
         primaryStage.setOnCloseRequest(e -> Platform.exit());
         primaryStage.setResizable(false);
         primaryStage.show();
