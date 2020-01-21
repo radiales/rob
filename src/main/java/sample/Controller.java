@@ -14,8 +14,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.IOException;
+import javax.swing.*;
+import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -45,18 +45,51 @@ public class Controller implements Initializable {
     private TableColumn<answers, Integer>   id;
     private TableColumn<answers, CheckBox>  select;
 
+    @FXML
+    ObservableList<answers> observableList;
+
+
     @Override
     public void initialize(URL url, ResourceBundle resources) {
         qCol.setCellValueFactory(new PropertyValueFactory<answers,String>("question"));
         aCol.setCellValueFactory(new PropertyValueFactory<answers,String>("answer"));
         kCol.setCellValueFactory(new PropertyValueFactory<answers,String>("category"));
+        observableList = FXCollections.observableArrayList();   // Initialisiert die Liste
+        String row = null;
+        BufferedReader csvReader = null;
+
+
+        try {
+            csvReader = new BufferedReader(new FileReader("C:\\Users\\radia\\IdeaProjects\\rob\\src\\main\\java\\band2HausGartencsv2.csv"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        while (true){
+            try {
+                if (!((row = csvReader.readLine()) != null)) break;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            String[] data = row.split(";");
+
+            observableList.add(new answers(data[0],data[1],data[2],Integer.parseInt(data[3])));
+
+
+        }
 
         tableView.setItems(observableList);
-    }
 
-    ObservableList<answers> observableList= FXCollections.observableArrayList(
-            new answers("Wie groß bin ich","1.98 Meter", "KEvin",1)
+    }
+/*
+    ObservableList<answers> observableList= FXCollections.observableArrayList(  // Hier werden die Daten am Anfang des Programmes hineingeladen
+
+
+
+            //new answers("Wie groß bin ich","1.98 Meter", "KEvin",1)  // TODO CSV hier hinein Laden
     );
+
+ */
 
 
     public Controller() {

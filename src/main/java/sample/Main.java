@@ -8,7 +8,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.yaml.snakeyaml.Yaml;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 
 public class Main extends Application {
 
@@ -21,7 +23,16 @@ public class Main extends Application {
         primaryStage.setOnCloseRequest(e -> Platform.exit());
         primaryStage.setResizable(false);
         primaryStage.show();
-
+/*
+        BufferedReader csvReader = new BufferedReader(new FileReader("C:\\Users\\radia\\IdeaProjects\\rob\\src\\main\\java\\band2HausGartencsv2.csv"));
+        String row;
+        while ((row = csvReader.readLine()) != null){
+            String[] data = row.split(";");
+            int i = 0;
+            //System.out.println(data[i] + data[i+1] + data[i+2] + Integer.parseInt(data[i+3]));
+            answers csvinput = new answers(data[i],data[i+1],data[i+2],Integer.parseInt(data[i+3]));
+        }
+*/
     }
 
 
