@@ -60,7 +60,7 @@ public class Controller implements Initializable {
 
 
         try {
-            csvReader = new BufferedReader(new FileReader("C:\\Users\\radia\\IdeaProjects\\rob\\src\\main\\java\\band2HausGartencsv2.csv"));
+            csvReader = new BufferedReader(new FileReader("C:\\Users\\radia\\IdeaProjects\\rob\\src\\main\\java\\database.csv"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -71,7 +71,7 @@ public class Controller implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            String[] data = row.split(";");
+            String[] data = row.split("\t");    // Wenn ich \t durch zb ; austausche spackt es aus unerfindlichen gründen rum
 
             observableList.add(new answers(data[0],data[1],data[2],Integer.parseInt(data[3])));
 
@@ -81,16 +81,6 @@ public class Controller implements Initializable {
         tableView.setItems(observableList);
 
     }
-/*
-    ObservableList<answers> observableList= FXCollections.observableArrayList(  // Hier werden die Daten am Anfang des Programmes hineingeladen
-
-
-
-            //new answers("Wie groß bin ich","1.98 Meter", "KEvin",1)  // TODO CSV hier hinein Laden
-    );
-
- */
-
 
     public Controller() {
     }
