@@ -13,10 +13,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import org.yaml.snakeyaml.Yaml;
 
 import javax.swing.*;
 import java.io.*;
 import java.net.URL;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 
@@ -35,11 +37,15 @@ public class Controller implements Initializable {
     @FXML
     private Button MainExcel;
     @FXML
+    private Button MExp;
+    @FXML
     private TableView<answers> tableView;
     @FXML
     private TableColumn<answers, String>    qCol;
     @FXML
     private TableColumn<answers, String>    aCol;
+    @FXML
+    private TableColumn<answers,CheckBox>   cCol;
     @FXML
     private TableColumn<answers, String>    kCol;
     private TableColumn<answers, Integer>   id;
@@ -54,13 +60,14 @@ public class Controller implements Initializable {
         qCol.setCellValueFactory(new PropertyValueFactory<answers,String>("question"));
         aCol.setCellValueFactory(new PropertyValueFactory<answers,String>("answer"));
         kCol.setCellValueFactory(new PropertyValueFactory<answers,String>("category"));
+        cCol.setCellValueFactory(new PropertyValueFactory<answers,CheckBox>("select"));
         observableList = FXCollections.observableArrayList();   // Initialisiert die Liste
         String row = null;
         BufferedReader csvReader = null;
 
 
         try {
-            csvReader = new BufferedReader(new FileReader("C:\\Users\\radia\\IdeaProjects\\rob\\src\\main\\java\\database.csv"));
+            csvReader = new BufferedReader(new FileReader("C:\\Users\\radia\\IdeaProjects\\rob\\src\\main\\java\\database.csv")); // Liest die Database ein
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -71,11 +78,9 @@ public class Controller implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            String[] data = row.split("\t");    // Wenn ich \t durch zb ; austausche spackt es aus unerfindlichen gründen rum
+            String[] data = row.split("\t");    // Wenn ich \t durch zb ; austausche spackt es aus unerfindlichen gründen rum, deshalb durch tab (ist ja auch egal i guess)
 
             observableList.add(new answers(data[0],data[1],data[2],Integer.parseInt(data[3])));
-
-
         }
 
         tableView.setItems(observableList);
@@ -104,12 +109,17 @@ public class Controller implements Initializable {
 
     @FXML
     private void MDel(){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("UC");
-        alert.setHeaderText(null);
-        alert.setContentText("Under Construction");
 
-        alert.showAndWait();
+
+        ObservableList<answers> dataListRemove = FXCollections.observableArrayList();
+            for (answers bean : observableList){
+                if (bean.getSelect().isSelected()){
+                    dataListRemove.add(bean);
+                }
+            }
+        observableList.removeAll(dataListRemove);
+        //tableView.getItems().removeAll(tableView.getSelectionModel().getSelectedItem()); // Für einzelne elemtene
+
     }
 
     @FXML
@@ -124,8 +134,40 @@ public class Controller implements Initializable {
 
     @FXML
     private void MEnd(){
+
         Platform.exit();
         System.exit(0);
+    }
+
+    @FXML
+    private void MExp(){
+
+
+
+        Yaml yaml = new Yaml();
+
+        ObservableList<answers> dataListExport = FXCollections.observableArrayList();
+        for (answers tmp : observableList){
+            if (tmp.getSelect().isSelected()){
+                dataListExport.add(tmp);
+            }
+        }
+
+        for (answers each : dataListExport){
+
+        }
+
+        /*
+        for (answers each: dataListExport){
+            System.out.println(each.getAnswer());
+        }
+        */
+
+        //Yaml yaml = new Yaml();
+        //InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("C:\\Users\\radia\\IdeaProjects\\rob\\src\\main\\java\\export.yaml");
+        //answers exp = yaml.load(inputStream);
+
+
     }
 
 //==================================================================================//

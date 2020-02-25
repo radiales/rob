@@ -8,38 +8,40 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="611.0" prefWidth="814.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane prefHeight="896.0" prefWidth="1338.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <Text layoutX="281.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fragen Verwaltungstool" textAlignment="CENTER" wrappingWidth="233.33678436279297">
+      <Text layoutX="552.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fragen Verwaltungstool" textAlignment="CENTER" wrappingWidth="233.33678436279297">
          <font>
             <Font size="19.0" />
          </font>
       </Text>
-      <Button fx:id="Mabt" layoutX="429.0" layoutY="537.0" mnemonicParsing="false" onAction="#abt" prefHeight="60.0" prefWidth="199.0" text="About" />
-      <Button fx:id="MainEnd" layoutX="632.0" layoutY="537.0" mnemonicParsing="false" onAction="#MEnd" prefHeight="60.0" prefWidth="169.0" text="Beenden" />
-      <Button fx:id="MainDel" layoutX="222.0" layoutY="537.0" mnemonicParsing="false" onAction="#MDel" prefHeight="60.0" prefWidth="199.0" text="Auswahl löschen" />
-      <TableView fx:id="tableView" layoutX="8.0" layoutY="68.0" prefHeight="399.0" prefWidth="796.0">
+      <Button fx:id="Mabt" layoutX="1098.0" layoutY="14.0" mnemonicParsing="false" onAction="#abt" prefHeight="25.0" prefWidth="68.0" text="About" />
+      <Button fx:id="MainEnd" layoutX="1155.0" layoutY="815.0" mnemonicParsing="false" onAction="#MEnd" prefHeight="60.0" prefWidth="169.0" text="Beenden" />
+      <Button fx:id="MainDel" layoutX="216.0" layoutY="765.0" mnemonicParsing="false" onAction="#MDel" prefHeight="60.0" prefWidth="199.0" text="Auswahl löschen" />
+      <TableView fx:id="tableView" layoutX="8.0" layoutY="68.0" prefHeight="693.0" prefWidth="1324.0">
         <columns>
-          <TableColumn fx:id="qCol" prefWidth="260.0" text="Frage" />
-          <TableColumn fx:id="aCol" minWidth="0.0" prefWidth="321.0" text="Antwort" />
-            <TableColumn fx:id="kCol" prefWidth="148.0" text="Kategorie" />
+          <TableColumn fx:id="qCol" prefWidth="591.0" text="Frage" />
+          <TableColumn fx:id="aCol" minWidth="0.0" prefWidth="551.0" text="Antwort" />
+            <TableColumn fx:id="kCol" minWidth="0.0" prefWidth="135.0" text="Kategorie" />
+            <TableColumn fx:id="cCol" prefWidth="39.0" text="Select" />
         </columns>
       </TableView>
-      <TextField fx:id="questBox" layoutX="14.0" layoutY="472.0" prefHeight="60.0" prefWidth="199.0" promptText="Frage">
+      <TextField fx:id="questBox" layoutX="8.0" layoutY="833.0" prefHeight="60.0" prefWidth="199.0" promptText="Frage">
          <font>
             <Font size="22.0" />
          </font>
       </TextField>
-      <TextField fx:id="ansBox" layoutX="222.0" layoutY="472.0" prefHeight="60.0" prefWidth="199.0" promptText="Antwort">
+      <TextField fx:id="ansBox" layoutX="216.0" layoutY="833.0" prefHeight="60.0" prefWidth="199.0" promptText="Antwort">
          <font>
             <Font size="22.0" />
          </font>
       </TextField>
-      <TextField fx:id="katBox" layoutX="429.0" layoutY="472.0" prefHeight="60.0" prefWidth="199.0" promptText="Kategorie">
+      <TextField fx:id="katBox" layoutX="423.0" layoutY="833.0" prefHeight="60.0" prefWidth="199.0" promptText="Kategorie">
          <font>
             <Font size="22.0" />
          </font>
       </TextField>
-      <Button fx:id="bAdd" layoutX="632.0" layoutY="472.0" mnemonicParsing="false" onAction="#bAdd" prefHeight="60.0" prefWidth="169.0" text="Frage Hinzufügen" />
+      <Button fx:id="bAdd" layoutX="8.0" layoutY="765.0" mnemonicParsing="false" onAction="#bAdd" prefHeight="60.0" prefWidth="199.0" text="Frage Hinzufügen" />
+      <Button fx:id="MainExp" layoutX="423.0" layoutY="765.0" mnemonicParsing="false" onAction="#MExp" prefHeight="60.0" prefWidth="199.0" text="Auswahl Exportieren" />
    </children>
 </AnchorPane>

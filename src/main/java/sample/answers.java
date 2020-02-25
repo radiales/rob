@@ -22,14 +22,14 @@ public class answers {
         private SimpleStringProperty  answer;
         private SimpleStringProperty  category;
         private SimpleIntegerProperty id;
-       // private CheckBox cBox;
+        private CheckBox              select;
 
         public answers(String q, String a, String c, int i){
             this.question   = new SimpleStringProperty(q);
             this.answer     = new SimpleStringProperty(a);
             this.category   = new SimpleStringProperty(c);
             this.id         = new SimpleIntegerProperty(i);
-            //this.cBox       = cb;
+            this.select     = new CheckBox();
         }
 
 /*===============================| Getter / Setter |===============================*/
@@ -45,8 +45,8 @@ public class answers {
         public int      getId()                 { return this.id.get(); }
         public void     setId(int i)            { this.id = new SimpleIntegerProperty(i); }
 
-        //public CheckBox GetCheckbox()           {return this.cBox;}
-        //public void     SetCheckbox(CheckBox c) {this.cBox = c;}
+        public CheckBox getSelect()             {return this.select ;}
+        public void     setSelect(CheckBox c)   {this.select  = c;}
 /*=================================================================================*/
 
 }
