@@ -134,6 +134,30 @@ public class Controller implements Initializable {
 
     @FXML
     private void MEnd(){
+        int i = 1;
+        StringBuilder sb = new StringBuilder();
+
+        for (answers each : observableList){
+            try (PrintWriter writer = new PrintWriter(new File("C:\\Users\\radia\\IdeaProjects\\rob\\src\\main\\java\\database.csv"))) {
+
+                sb.append(each.getQuestion());
+                sb.append('\t');
+                sb.append(each.getAnswer());
+                sb.append('\t');
+                sb.append(each.getCategory());
+                sb.append('\t');
+                sb.append(Integer.toString(i));
+                sb.append('\n');
+
+
+                writer.write(sb.toString());
+
+                i++;
+            } catch (FileNotFoundException e) {
+                System.out.println(e.getMessage());
+            }
+
+        }
 
         Platform.exit();
         System.exit(0);
@@ -152,11 +176,12 @@ public class Controller implements Initializable {
                 dataListExport.add(tmp);
             }
         }
-
+        /*
         for (answers each : dataListExport){
 
-        }
 
+        }
+        */
         /*
         for (answers each: dataListExport){
             System.out.println(each.getAnswer());
