@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.yaml.snakeyaml.Yaml;
 
 import javax.swing.*;
@@ -133,7 +134,7 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    private void MEnd(){
+    private void MEnd(){    // Programm muss über den beenden Button beendet werden damit die Datenbank AKtuell gehalten werden muss
         int i = 1;
         StringBuilder sb = new StringBuilder();
 
@@ -195,6 +196,7 @@ public class Controller implements Initializable {
 
     }
 
+
 //==================================================================================//
 
 //================================= Frage eingeben =================================//
@@ -210,11 +212,15 @@ public class Controller implements Initializable {
 
     @FXML
     private void bAdd(){
-        answers newquestion = new answers(questBox.getText(),ansBox.getText(),katBox.getText(),0);
-        tableView.getItems().add(newquestion);
-        questBox.clear();
-        ansBox.clear();
-        katBox.clear();
+
+        if (!questBox.getText().isEmpty() && !ansBox.getText().isEmpty() && !katBox.getText().isEmpty()) {
+
+            answers newquestion = new answers(questBox.getText(), ansBox.getText(), katBox.getText(), 0);
+            tableView.getItems().add(newquestion);
+            questBox.clear();
+            ansBox.clear();
+            katBox.clear();
+        }
     }
 
 //=================================================================================//

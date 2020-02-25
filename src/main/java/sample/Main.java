@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.BufferedReader;
@@ -22,6 +23,7 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root));
         primaryStage.setOnCloseRequest(e -> Platform.exit());
         primaryStage.setResizable(false);
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
 /*
         BufferedReader csvReader = new BufferedReader(new FileReader("C:\\Users\\radia\\IdeaProjects\\rob\\src\\main\\java\\band2HausGartencsv2.csv"));
