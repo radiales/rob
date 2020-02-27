@@ -131,31 +131,23 @@ public class Controller implements Initializable {
     @FXML
     private void MExp(){                                                                                                // Funktion um die Ausgewählten Fragen zu einer YAML DAtei zu Exportieren
 
-        Yaml yaml = new Yaml();
+        int i = 1;                                                                                                      // Zählvariable um die Daten die gespeichert werden vernünftig zu Nummerieren
+        StringBuilder sb = new StringBuilder();
 
-        ObservableList<answers> dataListExport = FXCollections.observableArrayList();
-        for (answers tmp : observableList){
-            if (tmp.getSelect().isSelected()){
-                dataListExport.add(tmp);
+        for (answers each : observableList){
+            if (each.getSelect().isSelected()) {
+                try (PrintWriter writer = new PrintWriter(new File("expo.yaml"))) {
+
+                    sb.append("frage" + i + ":" + "\n\tquestion: " + each.getQuestion() + "\n\tanswer: " + each.getAnswer() + "\n\tcategory: " + each.getCategory() + "\n\n");
+                    writer.write(sb.toString());
+
+                    i++;
+                } catch (FileNotFoundException e) {
+                    System.out.println(e.getMessage());
+                }
             }
-        }
-
-        /*
-        for (answers each : dataListExport){
-
 
         }
-        */
-        /*
-        for (answers each: dataListExport){
-            System.out.println(each.getAnswer());
-        }
-        */
-
-        //Yaml yaml = new Yaml();
-        //InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("C:\\Users\\radia\\IdeaProjects\\rob\\src\\main\\java\\export.yaml");
-        //answers exp = yaml.load(inputStream);
-
 
     }
 
