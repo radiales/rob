@@ -25,26 +25,32 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
-//================================== Main Window ===================================//
-    // To Do: Excel Button und Löschen Button Funktion Hinzufügen
-    @FXML
-    private TableView<answers>              tableView;
-    @FXML
-    private TableColumn<answers, String>    qCol;
-    @FXML
-    private TableColumn<answers, String>    aCol;
-    @FXML
-    private TableColumn<answers,CheckBox>   cCol;
-    @FXML
-    private TableColumn<answers, String>    kCol;
-    @FXML
-    ObservableList<answers>                 observableList;
+    //================================== Variablen ===================================//
 
+    @FXML
+    private TextField questBox;                                                                                         // Deklaration der Variablen im UI, Fragen,- Antworten,- und Kategoriebox
+    @FXML
+    private TextField ansBox;
+    @FXML
+    private TextField katBox;
+    @FXML
+    private TableView<answers>              tableView;                                                                  // Liste um später die Daten in der Tabelle anzuzeigen
+    @FXML
+    private TableColumn<answers, String>    qCol;                                                                       // Variable für die Fragen Spalte
+    @FXML
+    private TableColumn<answers, String>    aCol;                                                                       // Variable für die Antworten Spalte
+    @FXML
+    private TableColumn<answers,CheckBox>   cCol;                                                                       // Variable für die Auswahlbox Spalte
+    @FXML
+    private TableColumn<answers, String>    kCol;                                                                       // Variable für die Kategorie Spalte
+    @FXML
+    ObservableList<answers>                 observableList;                                                             // Liste für die JavaFX anzeige
 
+    //================================= Initialisierung =================================//
     @Override
     public void initialize(URL url, ResourceBundle resources) {
-        qCol.setCellValueFactory(new PropertyValueFactory<answers,String>("question"));
-        aCol.setCellValueFactory(new PropertyValueFactory<answers,String>("answer"));
+        qCol.setCellValueFactory(new PropertyValueFactory<answers,String>("question"));                               // Setzt die Spalten auf die dazugehörigen Elemente der Answer Klasse, muss genauso heißen wie die Variablen der Klasse
+        aCol.setCellValueFactory(new PropertyValueFactory<answers,String>("answer"));                                 // und die Get/Setter müssen alle den Muster entsprechen
         kCol.setCellValueFactory(new PropertyValueFactory<answers,String>("category"));
         cCol.setCellValueFactory(new PropertyValueFactory<answers,CheckBox>("select"));
         observableList =            FXCollections.observableArrayList();                                                // Initialisiert die Liste
@@ -53,49 +59,50 @@ public class Controller implements Initializable {
 
 
         try {
-            csvReader = new BufferedReader(new FileReader("database.csv")); // Liest die Database ein
+            csvReader = new BufferedReader(new FileReader("database.csv"));                                     // Liest die Database ein
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
         while (true){
             try {
-                if (!((row = csvReader.readLine()) != null)) break;
+                if (!((row = csvReader.readLine()) != null)) break;                                                     // Wenn die Datei leer ist, stop!
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            String[] data = row.split(";");
+            String[] data = row.split(";");                                                                       // Splittet die Eingelesenen Strings bei jeden Semikolon
 
-            observableList.add(new answers(data[0],data[1],data[2],Integer.parseInt(data[3])));
+            observableList.add(new answers(data[0],data[1],data[2],Integer.parseInt(data[3])));                         // Setzt die eben gesplitteten Daten in die JavaFX Liste
         }
 
-        tableView.setItems(observableList);
+        tableView.setItems(observableList);                                                                             // Zeigt die Daten an
 
     }
 
     public Controller() {
     }
-
+    //================================= Fragen löschen =================================//
     @FXML
-    private void MDel(){
+    private void MDel(){                                                                                                // Funktion für den "Auswahl löschen" Button
 
 
-        ObservableList<answers> dataListRemove = FXCollections.observableArrayList();
+        ObservableList<answers> dataListRemove = FXCollections.observableArrayList();                                   // Erstellt neue Liste in dem die zu löschenden Elemente zwischengespeichert werden
             for (answers bean : observableList){
                 if (bean.getSelect().isSelected()){
                     dataListRemove.add(bean);
                 }
             }
-        observableList.removeAll(dataListRemove);
+        observableList.removeAll(dataListRemove);                                                                       // Alle Fragen die selected wurden werden nun aus der Ursprungsliste gelöscht
 
     }
 
+    //================================= Programm Beenden =================================//
     @FXML
-    private void MEnd(){
-        int i = 1;
+    private void MEnd(){                                                                                                // Fuktion für den "Beenden" "Button
+        int i = 1;                                                                                                      // Zählvariable um die Daten die gespeichert werden vernünftig zu Nummerieren
         StringBuilder sb = new StringBuilder();
 
-        for (answers each : observableList){
+        for (answers each : observableList){                                                                            // Für alle Einträge in der Liste wird ein Eintrag in der Database.csv angelegt
             try (PrintWriter writer = new PrintWriter(new File("database.csv"))) {
 
                 sb.append(each.getQuestion());
@@ -120,9 +127,9 @@ public class Controller implements Initializable {
         Platform.exit();
         System.exit(0);
     }
-
+    //================================= Fragen exportieren =================================//
     @FXML
-    private void MExp(){
+    private void MExp(){                                                                                                // Funktion um die Ausgewählten Fragen zu einer YAML DAtei zu Exportieren
 
         Yaml yaml = new Yaml();
 
@@ -152,29 +159,21 @@ public class Controller implements Initializable {
 
     }
 
-//==================================================================================//
-
-//================================= Frage eingeben =================================//
-    @FXML
-    private TextField questBox;
-    @FXML
-    private TextField ansBox;
-    @FXML
-    private TextField katBox;
+    //================================= Frage eingeben =================================//
 
     @FXML
-    private void bAdd(){
+    private void bAdd(){                                                                                                // Funktion um eine Neue Frage hinzuzufügen
 
-        if (!questBox.getText().isEmpty() && !ansBox.getText().isEmpty() && !katBox.getText().isEmpty()) {
+            if (!questBox.getText().isEmpty() && !ansBox.getText().isEmpty() && !katBox.getText().isEmpty()) {          // Check ob auch in jeden Feld etwas steht
 
-            answers newquestion = new answers(questBox.getText(), ansBox.getText(), katBox.getText(), 0);
-            tableView.getItems().add(newquestion);
-            questBox.clear();
+            answers newquestion = new answers(questBox.getText(), ansBox.getText(), katBox.getText(), 0);            // Erstellt neus Fragenobjekt und speichert zwischen, ID ist erstmal irrelevant wird beim Beenden vergeben und gespeichert
+            tableView.getItems().add(newquestion);                                                                      // Fügt die Fragen der Liste hinzu
+            questBox.clear();                                                                                           // Macht die Textfelder Frei für neue Eingabe
             ansBox.clear();
             katBox.clear();
         }
     }
 
-//=================================================================================//
+    //=================================================================================//
 }
 

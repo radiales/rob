@@ -24,7 +24,7 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root));
         primaryStage.setOnCloseRequest(e -> Platform.exit());
         primaryStage.setResizable(false);
-        primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.initStyle(StageStyle.UNDECORATED);                                                                 // Schaltet die standard Minimize, Resize und Beenden Button aus
         primaryStage.show();
 
     }

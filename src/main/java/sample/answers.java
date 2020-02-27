@@ -4,18 +4,6 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.CheckBox;
 
-import java.awt.*;
-
-/*
-import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.Yaml;
-*/
 /* Klasse zur verwaltung der Fragen*/
 public class answers {
         private SimpleStringProperty  question;
@@ -24,7 +12,7 @@ public class answers {
         private SimpleIntegerProperty id;
         private CheckBox              select;
 
-        public answers(String q, String a, String c, int i){
+        public answers(String q, String a, String c, int i){                                                            //Standard Konstruktor, Die Strings müssen Simple Strings sein für die Tabelle
             this.question   = new SimpleStringProperty(q);
             this.answer     = new SimpleStringProperty(a);
             this.category   = new SimpleStringProperty(c);
