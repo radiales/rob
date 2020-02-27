@@ -138,7 +138,7 @@ public class Controller implements Initializable {
             if (each.getSelect().isSelected()) {
                 try (PrintWriter writer = new PrintWriter(new File("expo.yaml"))) {
 
-                    sb.append("frage" + i + ":" + "\n\tquestion: " + each.getQuestion() + "\n\tanswer: " + each.getAnswer() + "\n\tcategory: " + each.getCategory() + "\n\n");
+                    sb.append("frage"+ i +":" + "\n\tquestion: " + "\"" + each.getQuestion() + "\"" + "\n\tanswer: " + "\"" + each.getAnswer() + "\"" + "\n\tcategory: " + "\"" + each.getCategory() + "\"" + "\n\n");
                     writer.write(sb.toString());
 
                     i++;

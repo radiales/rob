@@ -1,35 +1,20 @@
 frage1:
-	question: Wie heißt die Balkonblume die man hierzulande am häufigsten sieht?
-	answer: Geranien (botanisch: Pelargonien=
-	category: HausGarten
+	question: "In welchem Monat wird der Muttertag gefeiert?"
+	answer: "im Mai"
+	category: "Familie"
 
 frage2:
-	question: Wie wurden Teppiche gereinigt, bevor es staubsauger gab?
-	answer: Die wurden im freien mit den Teppichklopfer ausgeklppft.
-	category: HausGarten
+	question: "Wie heißt ein klassisches Familienspiel: Mensch?"
+	answer: "Mensch, ärgere dich nicht"
+	category: "Familie"
 
 frage3:
-	question: Aus Kostengründen wurden kaputte Kleidungsstücke früher immer wieder ausgebessert und geflickt. Mit welcher Technik reparierte man löcher in Socken?
-	answer: durch Stopfen mit Wolle (Oder Garn) und Stopfnadel
-	category: HausGarten
+	question: "Welches tragische junge Liebespaar gilt als das berühmteste der Weltliteratur? Tipp: Ihre Geschichte wurde von William Shakespeare zu Papier gebracht."
+	answer: "Romeo und Julia"
+	category: "Familie"
 
 frage4:
-	question: Welche besonders edel wirkenden Deckenlampen werden auch als Lüster bezeichnet ?
-	answer: Kronleuchter
-	category: HausGarten
-
-frage5:
-	question: Wie nennt man umgangssprachlich Toiletten die keine Wasserspülung besitzen?
-	answer: Plumpsklo
-	category: HausGarten
-
-frage6:
-	question: Mit welcher Handarbeit verzierten Frauen früher häufig Tischdecken und Kissen?
-	answer: Stickerei
-	category: HausGarten
-
-frage7:
-	question: Wie nennt man die große Reinigungsaktion die in den meisten Haushalten nach der kalten Jahreszeit durchgeführt wird
-	answer: Frühjahrsputz
-	category: HausGarten
+	question: "Welche blonden Zwillingsschwestern feierten besonders in den 1960er- und 1970er-Jahren große Erfolge als Sängerinnen, Tänzerinnen und Schauspielerinnen?"
+	answer: "die Kessler-Zwillinge"
+	category: "Familie"
 
